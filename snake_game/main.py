@@ -7,9 +7,9 @@ screen.title("My Snake Game")
 
 starting_positions = [(0, 0), (-20, 0), (-40, 0)]
 
-for positions in starting_positions:
+for position in starting_positions:
     new_segment = Turtle("square")
     new_segment.color("white")
-    new_segment.goto(positions)
+    new_segment.goto(position)
 
 screen.exitonclick()
