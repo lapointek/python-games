@@ -8,7 +8,7 @@ class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
-        self.high_score = 0
+        self.high_score = self.read_score()
         self.color("White")
         self.penup()
         self.goto(0, 270)
@@ -26,8 +26,19 @@ class Scoreboard(Turtle):
     def reset(self):
         if self.score > self.high_score:
             self.high_score = self.score
+            # write contents to file
+            self.write_score(self.high_score)
         self.score = 0
         self.update_scoreboard()
+
+    def write_score(self, contents):
+        with open("data.txt", "w") as file:
+            file.write(contents)
+
+    def read_score(self):
+        with open("data.txt") as file:
+            contents = file.read()
+            return contents
 
     def increase_score(self):
         self.score += 1
